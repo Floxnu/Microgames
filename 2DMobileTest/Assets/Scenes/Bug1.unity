@@ -153,10 +153,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.05
+    y: 0.05
+    width: 0.9
+    height: 0.9
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bugobject: {fileID: 1426869356216040, guid: 7c788ec034799664a87f47ffca52e2eb, type: 2}
+  bug: []
 --- !u!4 &1171930428
 Transform:
   m_ObjectHideFlags: 0
