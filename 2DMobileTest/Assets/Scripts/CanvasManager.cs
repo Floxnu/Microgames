@@ -35,7 +35,7 @@ public class CanvasManager : MonoBehaviour {
 
 	public void LooseHeart(int heartNumber){
 
-		heartToLose = hearts[heartNumber];
+		heartToLose = hearts[heartNumber - 1];
 		StartCoroutine(ReduceHeart());
 
 	}
@@ -86,7 +86,7 @@ public class CanvasManager : MonoBehaviour {
 
 	public void FadeInBackground(){
 
-		canvasBackground.CrossFadeAlpha(1, 1, false);
+		canvasBackground.CrossFadeAlpha(1, 0.5f, false);
 
 	}
 

@@ -42,6 +42,8 @@ public class TimerManager : MonoBehaviour {
 			timerText.text = Mathf.Round(timeLeft + .5f).ToString();
 			yield return null;
 		}
+
+		GameManager.instance.TimerEnd();
 		
 	}
 
