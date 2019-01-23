@@ -17,8 +17,17 @@ public class Bug : MonoBehaviour {
 	private float time = 0f;
 
 	[Range(1.6f, 2)]public float stopa;
-
-	void Start () {
+	
+	/// <summary>
+	/// Awake is called when the script instance is being loaded.
+	/// </summary>
+	void Awake()
+	{
+		GameManager.OnGameStart += customStart;
+		
+	}
+	void customStart()
+	{
 		animator = GetComponent<Animator>();
 		List<int> exitx = new List<int>();
 		exitx.Add(-10);
@@ -34,6 +43,9 @@ public class Bug : MonoBehaviour {
 		position3 = new Vector3(Random.Range(-10,10),exity[Random.Range(0,2)],-5);
 		print(position3);
 		stopa = 2;
+
+	}
+	void Start () {
 
 	}
 	
@@ -92,6 +104,9 @@ public class Bug : MonoBehaviour {
 		/// </summary>
 		void OnDestroy()
 		{
+			GameManager.OnGameStart -= customStart;
 			BugSceneManager.instance.bug.Remove(gameObject);
 		}
+
+		
 }
