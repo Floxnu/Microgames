@@ -5,9 +5,18 @@ using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour {
 
+
+	public static TimerManager instance;
 	public Slider timeSlider;
 	public Text timerText;
 	public float timeLeft;
+
+	private void Awake() {
+		if(instance!=null){
+			instance = this;
+		}
+		instance = this;
+	}
 
 	public void SetGameTimer(int gameLength){
 
@@ -34,6 +43,10 @@ public class TimerManager : MonoBehaviour {
 			yield return null;
 		}
 		
+	}
+
+	private void OnDestroy() {
+		instance = null;
 	}
 	
 }

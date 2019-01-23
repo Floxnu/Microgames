@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 
 	public int gameDificulty;
 
+	private bool gameResult = false;
+
 	public enum GameType{
 		TOUCH,
 		TILT
@@ -22,6 +24,12 @@ public class GameManager : MonoBehaviour {
 
 	public delegate void StartAction();
 	public static event StartAction OnGameStart;
+	public delegate void EndAction();
+	public static event EndAction OnTimerEnd;
+
+
+
+	public string[] gameNames;
 
 	private void Awake() {
 		if(instance != null){
@@ -34,17 +42,40 @@ public class GameManager : MonoBehaviour {
 
 	private void Start() {
 		CanvasManager.instance.SetScoreText(currentScore.ToString());
+		CanvasManager.instance.ScoreFadeIn();
 		StartCoroutine(StartNextGame());
+
 		
 	}
 
 	IEnumerator StartNextGame(){
+
+		int randomGame = Random.Range(0, gameNames.Length);
+		string gameId = gameNames[randomGame] + gameDificulty;
+
 		yield return new WaitForSeconds(2);
+
+		CanvasManager.instance.ScoreFadeOut();
+		CanvasManager.instance.ShowTouch();
 
 		SceneManager.LoadScene(2, LoadSceneMode.Additive);
 		SceneManager.LoadScene(3, LoadSceneMode.Additive);
 
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
+
+		TimerManager.instance.StartTimer();
+
+		if(OnGameStart != null){
+			OnGameStart();
+		}
 
 	}
+
+	public void SetGameResult(bool gameEndResult){
+
+		gameResult = gameEndResult;
+
+	}
+
+	
 }

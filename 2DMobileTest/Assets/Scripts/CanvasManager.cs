@@ -26,8 +26,7 @@ public class CanvasManager : MonoBehaviour {
 	}
 
 	private void Start() {
-		ScoreFadeOut();
-		ShowTouch();
+
 	}
 
 	public void SetScoreText(string text){
@@ -80,7 +79,7 @@ public class CanvasManager : MonoBehaviour {
 	}
 
 	public void FadeOutBackground(){
-		canvasBackground.CrossFadeAlpha(0, 1, false);
+		canvasBackground.CrossFadeAlpha(0, .5f, false);
 
 	}
 
@@ -135,7 +134,7 @@ public class CanvasManager : MonoBehaviour {
 
 		while(gameTypeGroup.alpha > 0){
 
-			gameTypeGroup.alpha -= 0.05f;
+			gameTypeGroup.alpha -= 0.08f;
 			yield return null;
 
 		}
