@@ -176,8 +176,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &194936649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1304485457809716, guid: 078052a5e80c16c418250a00ca399194,
+    type: 3}
+  m_PrefabInstance: {fileID: 741895146}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &194936650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194936649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67b717b1c38d9b488c19bf078ff4ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
 --- !u!1 &226624490
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +277,7 @@ Transform:
   m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &226624493
 CircleCollider2D:
@@ -321,6 +340,7 @@ GameObject:
   - component: {fileID: 495093429}
   - component: {fileID: 495093428}
   - component: {fileID: 495093427}
+  - component: {fileID: 495093431}
   m_Layer: 0
   m_Name: Circle (6)
   m_TagString: Ball
@@ -425,8 +445,21 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &495093431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495093426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67b717b1c38d9b488c19bf078ff4ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
 --- !u!1 &513634985
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +602,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -584,6 +618,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106ca29cdd595ec4a94e1464b506641a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfBalls: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -638,7 +685,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &741895146
 PrefabInstance:
@@ -681,7 +728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4734367380922958, guid: 078052a5e80c16c418250a00ca399194, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 212979177038230090, guid: 078052a5e80c16c418250a00ca399194,
         type: 3}
@@ -771,6 +818,7 @@ GameObject:
   - component: {fileID: 880447098}
   - component: {fileID: 880447097}
   - component: {fileID: 880447096}
+  - component: {fileID: 880447100}
   m_Layer: 0
   m_Name: Circle (2)
   m_TagString: Ball
@@ -875,8 +923,21 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880447100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880447095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67b717b1c38d9b488c19bf078ff4ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
 --- !u!1 &1036269675
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +950,7 @@ GameObject:
   - component: {fileID: 1036269678}
   - component: {fileID: 1036269677}
   - component: {fileID: 1036269676}
+  - component: {fileID: 1036269680}
   m_Layer: 0
   m_Name: Circle (3)
   m_TagString: Ball
@@ -993,8 +1055,21 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036269680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036269675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67b717b1c38d9b488c19bf078ff4ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
 --- !u!1 &1112165036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,7 +1283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4386215071452712, guid: a16467ad40303d745b3dbf2041144521, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4386215071452712, guid: a16467ad40303d745b3dbf2041144521, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1253,7 +1328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4386215071452712, guid: a16467ad40303d745b3dbf2041144521, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a16467ad40303d745b3dbf2041144521, type: 3}
@@ -1269,6 +1344,7 @@ GameObject:
   - component: {fileID: 1936788801}
   - component: {fileID: 1936788800}
   - component: {fileID: 1936788799}
+  - component: {fileID: 1936788803}
   m_Layer: 0
   m_Name: Circle (4)
   m_TagString: Ball
@@ -1373,8 +1449,21 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1936788803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936788798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b67b717b1c38d9b488c19bf078ff4ceb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
 --- !u!1 &1960829342
 GameObject:
   m_ObjectHideFlags: 0

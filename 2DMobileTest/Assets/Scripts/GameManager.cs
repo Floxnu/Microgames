@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -51,8 +52,13 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator StartNextGame(){
 
-		int randomGame = Random.Range(0, gameNames.Length);
-		currentGameId = gameNames[randomGame] + gameDificulty;
+		int randomGame = UnityEngine.Random.Range(0, gameNames.Length);
+
+		string[] result = gameNames[randomGame].Split(',');
+		
+		int gameTimer = int.Parse(result[1]);
+	
+		currentGameId = result[0] + gameDificulty;
 
 		yield return new WaitForSeconds(2);
 
@@ -63,7 +69,8 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene(currentGameId, LoadSceneMode.Additive);
 
 		yield return new WaitForSeconds(2);
-
+		
+		TimerManager.instance.SetGameTimer(gameTimer);
 		TimerManager.instance.StartTimer();
 
 		if(OnGameStart != null){

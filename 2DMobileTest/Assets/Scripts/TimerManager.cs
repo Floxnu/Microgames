@@ -26,6 +26,7 @@ public class TimerManager : MonoBehaviour {
 	}
 
 	public void StartTimer(){
+		GameManager.instance.SetGameResult(false);
 
 		StartCoroutine(DecreaseTimer());
 

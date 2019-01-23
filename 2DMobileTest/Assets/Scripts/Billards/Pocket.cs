@@ -4,27 +4,13 @@ using UnityEngine;
 
 public class Pocket : MonoBehaviour {
 
-	GameObject currentBall;
+	Ball currentBall;
 
 	private void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.CompareTag("Ball")){
 			other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-			currentBall = other.gameObject;
-			StartCoroutine("moveToInside");
+			Ball currentBall = other.gameObject.GetComponent<Ball>();
+			currentBall.CaughtByPocket(transform.position);
 		}
-	}
-
-	IEnumerator moveToInside(){
-
-		currentBall.GetComponent<Collider2D>().enabled = false;
-		
-		for(int i = 0; i<15; i++){
-			Vector3 targetVector = new Vector3(transform.position.x, transform.position.y, 0);
-			currentBall.transform.position = Vector3.Lerp(currentBall.transform.position, targetVector,0.2f);
-			yield return null;
-		}
-
-		Destroy(currentBall);
-		currentBall = null;
 	}
 }
