@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager: MonoBehaviour {
+public class BugSceneManager: MonoBehaviour {
 
-	public static SceneManager instance = null;
+	public static BugSceneManager instance = null;
 	public GameObject bugobject;
 	private Vector3 range; 
 

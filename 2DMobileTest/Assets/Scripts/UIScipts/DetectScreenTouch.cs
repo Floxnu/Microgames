@@ -10,7 +10,6 @@ public class DetectScreenTouch : MonoBehaviour {
 		if(Input.touches.Length > 0){
 			SceneManager.LoadScene(1);
 		}
-
-		
+	
 	}
 }

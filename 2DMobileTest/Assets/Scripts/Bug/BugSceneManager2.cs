@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager3: MonoBehaviour {
+public class BugSceneManager2: MonoBehaviour {
 
-	 public static SceneManager3 instance = null;
+	 public static BugSceneManager2 instance = null;
 	public GameObject bugobject;
 	private Vector3 range; 
 	private Vector3 range1; 
-	private Vector3 range2; 
+
 
 	private static bool winningstate = false;
 
@@ -18,7 +18,6 @@ public class SceneManager3: MonoBehaviour {
 	void Start () {
 		range = new Vector3(Random.Range(2,6),Random.Range(-2.6f,2.6f),-5f);
 		range1 = new Vector3(Random.Range(2,6),Random.Range(-2.6f,2.6f),-5f);
-		range2 = new Vector3(Random.Range(2,6),Random.Range(-2.6f,2.6f),-5f);
 
 		Invoke("instantiateobject", 1.0f);
 		
@@ -49,9 +48,6 @@ public class SceneManager3: MonoBehaviour {
   		bug.Add(current);
 		current = Instantiate(bugobject,range1,Quaternion.identity);
   		bug.Add(current);
-		current = Instantiate(bugobject,range2,Quaternion.identity);
-  		bug.Add(current);
-
 	}
 
 	public bool checkifwin()

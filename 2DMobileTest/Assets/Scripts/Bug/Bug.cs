@@ -92,6 +92,6 @@ public class Bug : MonoBehaviour {
 		/// </summary>
 		void OnDestroy()
 		{
-			SceneManager.instance.bug.Remove(gameObject);
+			BugSceneManager.instance.bug.Remove(gameObject);
 		}
 }
