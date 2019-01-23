@@ -7,13 +7,14 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 
-	private int livesRemaining;
+	private int livesRemaining = 3;
 
 	public int currentScore;
 
 	public int gameDificulty;
 
 	private bool gameResult = false;
+	private string currentGameId;
 
 	public enum GameType{
 		TOUCH,
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour {
 	IEnumerator StartNextGame(){
 
 		int randomGame = Random.Range(0, gameNames.Length);
-		string gameId = gameNames[randomGame] + gameDificulty;
+		currentGameId = gameNames[randomGame] + gameDificulty;
 
 		yield return new WaitForSeconds(2);
 
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour {
 		CanvasManager.instance.ShowTouch();
 
 		SceneManager.LoadScene(2, LoadSceneMode.Additive);
-		SceneManager.LoadScene(3, LoadSceneMode.Additive);
+		SceneManager.LoadScene(currentGameId, LoadSceneMode.Additive);
 
 		yield return new WaitForSeconds(2);
 
@@ -74,6 +75,38 @@ public class GameManager : MonoBehaviour {
 	public void SetGameResult(bool gameEndResult){
 
 		gameResult = gameEndResult;
+
+	}
+
+	public void TimerEnd(){
+
+		StartCoroutine(GameEndTransition());
+	
+	}
+
+	IEnumerator GameEndTransition(){
+
+		CanvasManager.instance.FadeInBackground();
+		yield return new WaitForSeconds(0.5f);
+
+		CanvasManager.instance.ScoreFadeIn();
+		yield return new WaitForSeconds(0.5f);
+
+		if(gameResult){
+			currentScore++;
+			CanvasManager.instance.SetScoreText(currentScore.ToString());
+		} else {
+			CanvasManager.instance.LooseHeart(livesRemaining);
+			print(livesRemaining);
+			livesRemaining--;
+		}
+		
+		SceneManager.UnloadSceneAsync(currentGameId);
+		SceneManager.UnloadSceneAsync(2);
+
+		yield return null;
+
+		StartCoroutine(StartNextGame());
 
 	}
 
