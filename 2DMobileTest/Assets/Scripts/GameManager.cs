@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 	public int gameDificulty;
 
 	private bool gameResult = false;
-	private string currentGameId;
+	public string currentGameId;
 
 	public enum GameType{
 		TOUCH,
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour {
 		int randomGame = UnityEngine.Random.Range(0, gameNames.Length);
 
 		string[] result = gameNames[randomGame].Split(',');
-		
+
 		int gameTimer = int.Parse(result[1]);
 	
 		currentGameId = result[0] + gameDificulty;
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene(currentGameId, LoadSceneMode.Additive);
 
 		yield return new WaitForSeconds(2);
-		
+
 		TimerManager.instance.SetGameTimer(gameTimer);
 		TimerManager.instance.StartTimer();
 
@@ -95,6 +95,11 @@ public class GameManager : MonoBehaviour {
 
 		CanvasManager.instance.FadeInBackground();
 		yield return new WaitForSeconds(0.5f);
+		
+		if(OnTimerEnd != null){
+			OnTimerEnd();
+
+		}
 
 		CanvasManager.instance.ScoreFadeIn();
 		yield return new WaitForSeconds(0.5f);

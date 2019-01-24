@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bug1.unity
     guid: 4dfe873c8d6659740b09806246e8d366
+  - enabled: 1
+    path: Assets/Scenes/Plugs1.unity
+    guid: 6b0467757878e7146870486047cb9b67
   m_configObjects: {}
