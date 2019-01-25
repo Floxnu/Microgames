@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PathfindingGrid : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class PathfindingGrid : MonoBehaviour {
 	float nodeDiameter;
 	int gridSizeX;
 	int gridSizeY;
+	List<GameObject> gridLines;
 
 
 
@@ -24,6 +26,16 @@ public class PathfindingGrid : MonoBehaviour {
 	{
 		get {
 			return gridSizeX * gridSizeY;
+		}
+	}
+
+	private void Start() {
+		foreach (GameObject line in gridLines)
+		{
+			if(line != null){
+
+				SceneManager.MoveGameObjectToScene(line,SceneManager.GetSceneByName(GameManager.instance.currentGameId));
+			}
 		}
 	}
 
@@ -70,7 +82,9 @@ public class PathfindingGrid : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () 
-	{
+	{	
+
+		gridLines = new List<GameObject>();
 		nodeDiameter = nodeRadius * 2;
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);
 		gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
@@ -129,21 +143,27 @@ public class PathfindingGrid : MonoBehaviour {
 		{
 			for (int y = 0; y < gridSizeY; y++) 
 			{
+				GameObject current = null;
 				Vector3 worldPoint = gridBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
 				bool walkable = !(Physics.CheckSphere (worldPoint, nodeRadius, unwalkableMask));
 				grid [x, y] = new Node (walkable, worldPoint, x, y);
 				if(x == 0){
 					Vector3 linePoint = worldPoint - (Vector3.up * -.5f) + (Vector3.right * 5);
-					Instantiate(cubePrefab, linePoint, Quaternion.identity);
+					current = Instantiate(cubePrefab, linePoint, Quaternion.identity);
+					gridLines.Add(current);
 				}
 				if(y==0){
 					Vector3 linePointY =  worldPoint - (Vector3.up * -5) + (Vector3.right * -.5f);
-					GameObject current = Instantiate(cubePrefab, linePointY, Quaternion.identity);
+					current = Instantiate(cubePrefab, linePointY, Quaternion.identity);
+
 					current.transform.Rotate(0,0,90);
+					gridLines.Add(current);
 				}
 
 
-			
+				
+				
+					
 			}
 		}
 	}

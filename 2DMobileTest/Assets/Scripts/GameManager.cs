@@ -63,7 +63,13 @@ public class GameManager : MonoBehaviour {
 		yield return new WaitForSeconds(2);
 
 		CanvasManager.instance.ScoreFadeOut();
-		CanvasManager.instance.ShowTouch();
+
+		if(result[2].Equals("tilt")){
+
+			CanvasManager.instance.ShowTilt();
+		} else{
+			CanvasManager.instance.ShowTouch();
+		}
 
 		SceneManager.LoadScene(2, LoadSceneMode.Additive);
 		SceneManager.LoadScene(currentGameId, LoadSceneMode.Additive);

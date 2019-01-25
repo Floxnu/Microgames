@@ -6,17 +6,42 @@ public class DKMovement : MonoBehaviour {
 
 	// Use this for initialization
 	Rigidbody2D rbRef;
+	float startFall;
+	Animator animRef;
 
+
+	private void Awake() {
+		GameManager.OnGameStart += CustomStart;
+	}
 	void Start () {
 		rbRef = GetComponent<Rigidbody2D>();
-		rbRef.velocity = new Vector2(5,0);
-
+		animRef = GetComponent<Animator>();
 		
+	}
+
+	public void CustomStart(){
+		rbRef.velocity = new Vector2(4,0);
+		GameManager.OnGameStart -= CustomStart;
+	}
+
+
+
+	private void Update() {
+		RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+
+		 if (hit.collider == null)
+        {
+			if(startFall > 0 ){
+				startFall -= Time.deltaTime;
+			}else{
+            	animRef.SetBool("IsFalling", true);
+
+			}
+        } else{
+			startFall = 0.1f;
+			animRef.SetBool("IsFalling", false);
+		}
+
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-		
-	}
 }

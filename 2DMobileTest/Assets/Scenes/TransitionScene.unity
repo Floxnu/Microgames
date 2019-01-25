@@ -1374,10 +1374,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScore: 0
   gameDificulty: 1
+  currentGameId: 
   currentGameType: 0
   gameNames:
+<<<<<<< HEAD
   - Physics,10
   - Bug,5
+=======
+  - TiltBall,10,tilt
+>>>>>>> master
 --- !u!1 &1217964273
 GameObject:
   m_ObjectHideFlags: 0

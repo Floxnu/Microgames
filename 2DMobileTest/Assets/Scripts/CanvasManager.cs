@@ -43,7 +43,6 @@ public class CanvasManager : MonoBehaviour {
 		tiltGroup.alpha = 1;
 		touchGroup.alpha = 0;
 		GameTypeFadeIn();
-		canvasBackground.CrossFadeAlpha(0, 2, false);
 
 	}
 	public void ShowTouch(){
