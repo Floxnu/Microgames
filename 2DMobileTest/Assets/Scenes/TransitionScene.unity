@@ -1376,8 +1376,7 @@ MonoBehaviour:
   gameDificulty: 1
   currentGameType: 0
   gameNames:
-  - Physics,10
-  - Bug,5
+  - Plugs,10
 --- !u!1 &1217964273
 GameObject:
   m_ObjectHideFlags: 0
