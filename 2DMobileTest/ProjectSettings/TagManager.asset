@@ -7,7 +7,11 @@ TagManager:
   - Floor
   - Ball
   - Bug
+<<<<<<< Updated upstream
   - Plug
+=======
+  - Alien
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

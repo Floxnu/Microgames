@@ -23,11 +23,7 @@ public class Bug : MonoBehaviour {
 	/// </summary>
 	void Awake()
 	{
-		GameManager.OnGameStart += customStart;
-		
-	}
-	void customStart()
-	{
+
 		animator = GetComponent<Animator>();
 		List<int> exitx = new List<int>();
 		exitx.Add(-10);
@@ -44,9 +40,8 @@ public class Bug : MonoBehaviour {
 		print(position3);
 		stopa = 2;
 
-	}
-	void Start () {
 
+		
 	}
 	
 	// Update is called once per frame
@@ -104,8 +99,24 @@ public class Bug : MonoBehaviour {
 		/// </summary>
 		void OnDestroy()
 		{
-			GameManager.OnGameStart -= customStart;
+			if(BugSceneManager.instance)
+			{
 			BugSceneManager.instance.bug.Remove(gameObject);
+			}else if (BugSceneManager2.instance)
+			{
+			BugSceneManager2.instance.bug.Remove(gameObject);
+				
+			}else if(BugSceneManager3.instance)
+			{
+			BugSceneManager3.instance.bug.Remove(gameObject);
+			}
+		}
+
+		/// <summary>
+		/// This function is called when the behaviour becomes disabled or inactive.
+		/// </summary>
+		void OnDisable()
+		{
 		}
 
 		

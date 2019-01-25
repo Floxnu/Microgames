@@ -15,13 +15,17 @@ public class BugSceneManager2: MonoBehaviour {
 	public List<GameObject> bug = new List<GameObject>();
 
 
-	void Start () {
-		range = new Vector3(Random.Range(2,6),Random.Range(-2.6f,2.6f),-5f);
-		range1 = new Vector3(Random.Range(2,6),Random.Range(-2.6f,2.6f),-5f);
+	void customStart()
+	{
+	range = new Vector3(Random.Range(2,6),Random.Range(-2.6f,2.6f),-5f);
+	range1 = new Vector3(Random.Range(2,6),Random.Range(-2.6f,2.6f),-5f);
+
 
 		Invoke("instantiateobject", 1.0f);
 		
 		Invoke("checkifwin", 6);
+		GameManager.OnGameStart -= customStart;		
+
 	}
 	
 	void Update () {
@@ -39,6 +43,7 @@ public class BugSceneManager2: MonoBehaviour {
                 Destroy(gameObject);    
 				}
             DontDestroyOnLoad(gameObject);
+		GameManager.OnGameStart += customStart;
 
 	}
 
@@ -52,19 +57,18 @@ public class BugSceneManager2: MonoBehaviour {
 
 	public bool checkifwin()
 	{
-		if (bug.Count == 0)
+			if (bug.Count == 0)
 		{
 			winningstate = true;
-			print(true);
-			print(bug.Count);
-			return true;
+			GameManager.instance.SetGameResult(true);
 		}else
 		{
 			print(bug.Count);
 			winningstate = false;
-			print(false);
-			return false;
+			GameManager.instance.SetGameResult(false);
 		}
+			instance = null;
+			return winningstate;
 	}
 
 	public static bool getwinningstate()
