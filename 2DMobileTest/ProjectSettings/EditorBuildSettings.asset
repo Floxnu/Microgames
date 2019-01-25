@@ -4,34 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: b8fc60eb33b9a0047ad06b93af4eb686
-  - enabled: 1
-    path: Assets/Scenes/TransitionScene.unity
-    guid: ee581f8f692fcb346abd96f1770ecfc3
-  - enabled: 1
-    path: Assets/Scenes/GameOverlay.unity
-    guid: e5b7a3ce79be3f645b5b0ffee978c0d8
-  - enabled: 1
-    path: Assets/Scenes/Physics1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Bug1.unity
-    guid: 4dfe873c8d6659740b09806246e8d366
-  - enabled: 1
-<<<<<<< Updated upstream
-    path: Assets/Scenes/Plugs1.unity
-    guid: 6b0467757878e7146870486047cb9b67
-=======
-    path: Assets/Scenes/Bug2.unity
-    guid: 3f80676cac0f7cf4ba557f4d8048fd37
-  - enabled: 1
-    path: Assets/Scenes/Bug3.unity
-    guid: e9f21c1ae8d62a4469cd922e747fc8fe
-  - enabled: 1
-    path: Assets/Scenes/Alien1.unity
-    guid: 64b3cda553feefe46884ea812c329e36
->>>>>>> Stashed changes
+  m_Scenes: []
   m_configObjects: {}

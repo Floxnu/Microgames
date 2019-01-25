@@ -4,14 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
-  - Ball
-  - Bug
-<<<<<<< Updated upstream
   - Plug
-=======
-  - Alien
->>>>>>> Stashed changes
+  - Bug
   layers:
   - Default
   - TransparentFX

@@ -39,7 +39,7 @@ public class SpawnAlien : MonoBehaviour
     
     void customStart()
     {
-        // SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameManager.instance.))
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameManager.instance.currentGameId));
     
         string[] thisname = gameObject.name.Split(',');
         pointlocation = int.Parse(thisname[1]);
