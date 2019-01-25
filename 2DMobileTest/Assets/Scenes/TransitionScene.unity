@@ -1374,9 +1374,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScore: 0
   gameDificulty: 1
+  currentGameId: 
   currentGameType: 0
   gameNames:
-  - Plugs,10
+  - TiltBall,10,tilt
 --- !u!1 &1217964273
 GameObject:
   m_ObjectHideFlags: 0
