@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TouchToPlatform : MonoBehaviour {
 
@@ -15,7 +16,9 @@ public class TouchToPlatform : MonoBehaviour {
 			print(current.gridX + ", " + current.gridY);
 			if(!current.hasFloor){
 				current.hasFloor = true;
-				Instantiate(platformRef,current.worldPosition, Quaternion.identity);
+				GameObject platformSpawned = Instantiate(platformRef,current.worldPosition, Quaternion.identity);
+				SceneManager.MoveGameObjectToScene(platformSpawned,SceneManager.GetSceneByName(GameManager.instance.currentGameId));
+
 			}
 		}
 		
