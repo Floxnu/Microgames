@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class AlienSceneManager : MonoBehaviour
 {
 	public static AlienSceneManager instance = null;
     public int spawnAlien;
     public bool isWin = false;
+    public int levelDifficulty;
 
     public bool killer = false;    
+    public bool clicked = false;
 
     public List<GameObject> peoples = new List<GameObject>();
 
@@ -21,9 +24,22 @@ public class AlienSceneManager : MonoBehaviour
 			Destroy(this);
 		}
 		instance = this;
-        spawnAlien = Random.Range(5, 16);
+        string[] sceneDifficulty = Regex.Split(GameManager.instance.currentGameId,".+(\\d)");
+        levelDifficulty = int.Parse(sceneDifficulty[1]);
+        switch(levelDifficulty)
+       {
+           case 1:
+           case 2:
+            spawnAlien = Random.Range(5, 14);
+            
+           break;
+           case 3:
+            spawnAlien = Random.Range(6, 17);
+           break;
+       }
+
         GameManager.OnGameStart += customStart;
-        InvokeRepeating("killerStare",2,2);
+        InvokeRepeating("killerStare",2,1);
         Invoke("setGameResult",10);
     }
     void Start()

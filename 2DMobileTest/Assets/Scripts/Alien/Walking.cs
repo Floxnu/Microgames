@@ -10,6 +10,7 @@ public class Walking : MonoBehaviour
     public bool killer = false;
 
     public bool isAlien = false;
+    private Rigidbody2D rigidbody2D;
 
 	Vector3 targetposition1;
     public Animator animator ;
@@ -17,14 +18,25 @@ public class Walking : MonoBehaviour
 
    void Awake()
    {
-       speed = Random.Range(2f,5f);
+       switch(AlienSceneManager.instance.levelDifficulty)
+       {
+           case 1:
+            speed = Random.Range(2f,5f);
+           break;
+           case 2:
+            speed = Random.Range(4f,7f);
+           break;
+           case 3:
+            speed = Random.Range(6f,9f);
+           break;
+       }
         animator = GetComponent<Animator>();
    }
 
     void Start()
     {
-        Rigidbody2D rigidbody2d = GetComponent<Rigidbody2D>();
-        rigidbody2d.gravityScale = 0;
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D.gravityScale = 0;
         
     }
 
@@ -36,8 +48,8 @@ public class Walking : MonoBehaviour
         currentposition = this.transform.position;
         if(target)
         {   
-            targetposition1 = target.transform.position; 
-		    this.transform.position = Vector3.MoveTowards(currentposition,targetposition1, speed * Time.deltaTime);	           
+            targetposition1 = target.transform.position;
+            rigidbody2D.MovePosition(Vector3.MoveTowards(currentposition,targetposition1, speed * Time.deltaTime));
         }else
         {
             
@@ -48,6 +60,8 @@ public class Walking : MonoBehaviour
 
     void OnMouseDown()
     {
+        if(!AlienSceneManager.instance.clicked)
+        {
          if(!isAlien)
         {
             AlienSceneManager.instance.killer = true;
@@ -56,9 +70,9 @@ public class Walking : MonoBehaviour
             AlienSceneManager.instance.isWin = true;
         }
         AlienSceneManager.instance.peoples.Remove(gameObject);
-        if(!AlienSceneManager.instance.killer || !AlienSceneManager.instance.isWin)
-        {
+        AlienSceneManager.instance.clicked = true;        
         Destroy(gameObject);
+        
         }
     }
 }

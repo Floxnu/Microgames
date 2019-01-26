@@ -1373,11 +1373,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  gameDificulty: 1
+  gameDificulty: 3
+  currentGameId: 
   currentGameType: 0
   gameNames:
-  - Physics,10
-  - Bug,5
+  - Alien,10
 --- !u!1 &1217964273
 GameObject:
   m_ObjectHideFlags: 0

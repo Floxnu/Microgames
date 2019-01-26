@@ -14,7 +14,7 @@ public class SpawnAlien : MonoBehaviour
     private SpriteRenderer spriteR;
     private int pointlocation;
     private Quaternion rPoint1 = Quaternion.Euler(0,-38.68f,0);
-    private float spawntime1,spawntime2,spawntime3,spawntime4;
+    private float spawntime1,spawntime2,spawntime3,spawntime4,spawntime5,spawntime6;
     public GameObject target;
 
     private int currentNumber;
@@ -27,39 +27,82 @@ public class SpawnAlien : MonoBehaviour
     {
         
         AlienSceneManager.StartThis += customStart;
+        
         spawntime1 = UnityEngine.Random.Range(0,2f);
         spawntime2 = UnityEngine.Random.Range(3f,4f);
         spawntime3 = UnityEngine.Random.Range(4f,5f);
         spawntime4 = UnityEngine.Random.Range(5,6f);
-        spawntime4 = UnityEngine.Random.Range(7,8f);
+        spawntime5 = UnityEngine.Random.Range(6.5f,8f);
+        spawntime6 = UnityEngine.Random.Range(7.3f,9f);
 
     }
 
-    
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+      
+    }
     
     void customStart()
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(GameManager.instance.currentGameId));
-    
+        int difficulty = AlienSceneManager.instance.levelDifficulty;
+
         string[] thisname = gameObject.name.Split(',');
         pointlocation = int.Parse(thisname[1]);
-        switch (pointlocation)
-       {
-           case 1:
-           currentNumber = 1;
-           break;
-           case 2:
-            currentNumber = 6;
-           break;
-           case 3:
-            currentNumber = 11;
-           break;
-       }
+        print(difficulty);
+
+
+        switch(difficulty)
+        {
+            case 1:
+            case 2:
+            switch (pointlocation)
+            {
+                case 1:
+                currentNumber = 1;
+                break;
+                case 2:
+                currentNumber = 6;
+                break;
+                case 3:
+                currentNumber = 11;
+                break;
+            }
+            Invoke("instantiate", spawntime1);
+            Invoke("instantiate", spawntime2);
+            Invoke("instantiate", spawntime3);
+            Invoke("instantiate", spawntime4);
+            Invoke("instantiate", spawntime5);
+            break;
+            case 3:
+            
+            switch (pointlocation)
+            {
+            case 1:
+                currentNumber = 1;
+                break;
+            case 2:
+                currentNumber = 7;
+                break;
+            case 3:
+                currentNumber = 13;
+                break;
+            }
+            Invoke("instantiate", spawntime1);
+            Invoke("instantiate", spawntime2);
+            Invoke("instantiate", spawntime3);
+            Invoke("instantiate", spawntime4);
+            Invoke("instantiate", spawntime5);
+            Invoke("instantiate", spawntime6);
+            break;
+        }
         
-       Invoke("instantiate", spawntime1);
-       Invoke("instantiate", spawntime2);
-       Invoke("instantiate", spawntime3);
-       Invoke("instantiate", spawntime4);
+      
+        AlienSceneManager.StartThis -= customStart;
 
     }
 
