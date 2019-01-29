@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Bug
   - Plug
+  - Rock
   layers:
   - Default
   - TransparentFX

@@ -5,9 +5,13 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Vector3 target;
+    Rigidbody2D rbRef;
 
 
 
+    private void Awake() {
+        rbRef = GetComponent<Rigidbody2D>();
+    }
     public void CaughtByPocket(Vector3 targetPos){
         target = targetPos;
         StartCoroutine(moveToInside());
@@ -28,4 +32,5 @@ public class Ball : MonoBehaviour
 		Destroy(gameObject);
 
 	}
+
 }

@@ -18,15 +18,54 @@ EditorBuildSettings:
     path: Assets/Scenes/Physics1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Physics2.unity
+    guid: 150c159195b3bce4ebbc8c28d0eb78b6
+  - enabled: 1
+    path: Assets/Scenes/Physics3.unity
+    guid: e94a581dbc5466b4083c2002548a9585
+  - enabled: 1
     path: Assets/Scenes/Bug1.unity
     guid: 4dfe873c8d6659740b09806246e8d366
+  - enabled: 1
+    path: Assets/Scenes/Bug2.unity
+    guid: 3f80676cac0f7cf4ba557f4d8048fd37
+  - enabled: 1
+    path: Assets/Scenes/Bug3.unity
+    guid: e9f21c1ae8d62a4469cd922e747fc8fe
+  - enabled: 1
+    path: Assets/Scenes/TiltBall1.unity
+    guid: a28424f4819eb9941893765db4d40161
+  - enabled: 1
+    path: Assets/Scenes/TiltBall2.unity
+    guid: 7f51b139fb62ef545b542f0a5046887a
+  - enabled: 1
+    path: Assets/Scenes/TiltBall3.unity
+    guid: 95f1673fe2debac4ca9c372a359fca1f
+  - enabled: 1
+    path: Assets/Scenes/Alien1.unity
+    guid: 64b3cda553feefe46884ea812c329e36
+  - enabled: 1
+    path: Assets/Scenes/Alien2.unity
+    guid: 07bb3b6873d54bb4ca23e3b4352d4e9c
+  - enabled: 1
+    path: Assets/Scenes/Alien3.unity
+    guid: 17f923c9ccc7d1e43919a83725d7fe65
+  - enabled: 1
+    path: Assets/Scenes/Paths1.unity
+    guid: e73586f9e9cc8b143b5e07a9eeda7b82
+  - enabled: 1
+    path: Assets/Scenes/Paths2.unity
+    guid: ac436dabaceda834ea08d2dffe0f3f3f
+  - enabled: 1
+    path: Assets/Scenes/Paths3.unity
+    guid: 2ab93d2fd1dac1b4499e05316f58416a
   - enabled: 1
     path: Assets/Scenes/Plugs1.unity
     guid: 6b0467757878e7146870486047cb9b67
   - enabled: 1
-    path: Assets/Scenes/Paths1.unity
-    guid: c37fd4c74e8c27042a69fe87336cf3dc
+    path: Assets/Scenes/Plugs2.unity
+    guid: 1e2eccf80c7a794409493275b65b47a7
   - enabled: 1
-    path: Assets/Scenes/TiltBall1.unity
-    guid: a28424f4819eb9941893765db4d40161
+    path: Assets/Scenes/Plugs3.unity
+    guid: 85c1075cec8c39043b17af33dff7d65a
   m_configObjects: {}

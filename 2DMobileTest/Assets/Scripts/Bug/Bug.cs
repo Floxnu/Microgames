@@ -17,8 +17,13 @@ public class Bug : MonoBehaviour {
 	private float time = 0f;
 
 	[Range(1.6f, 2)]public float stopa;
+	
+	/// <summary>
+	/// Awake is called when the script instance is being loaded.
+	/// </summary>
+	void Awake()
+	{
 
-	void Start () {
 		animator = GetComponent<Animator>();
 		List<int> exitx = new List<int>();
 		exitx.Add(-10);
@@ -35,6 +40,8 @@ public class Bug : MonoBehaviour {
 		print(position3);
 		stopa = 2;
 
+
+		
 	}
 	
 	// Update is called once per frame
@@ -92,6 +99,25 @@ public class Bug : MonoBehaviour {
 		/// </summary>
 		void OnDestroy()
 		{
+			if(BugSceneManager.instance)
+			{
 			BugSceneManager.instance.bug.Remove(gameObject);
+			}else if (BugSceneManager2.instance)
+			{
+			BugSceneManager2.instance.bug.Remove(gameObject);
+				
+			}else if(BugSceneManager3.instance)
+			{
+			BugSceneManager3.instance.bug.Remove(gameObject);
+			}
 		}
+
+		/// <summary>
+		/// This function is called when the behaviour becomes disabled or inactive.
+		/// </summary>
+		void OnDisable()
+		{
+		}
+
+		
 }

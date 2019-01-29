@@ -10,6 +10,7 @@ public class TimerManager : MonoBehaviour {
 	public Slider timeSlider;
 	public Text timerText;
 	public float timeLeft;
+	private float timeSpeed = 1;
 
 	private void Awake() {
 		if(instance!=null){
@@ -38,8 +39,13 @@ public class TimerManager : MonoBehaviour {
 		timeSlider.value = 100;
 
 		while(timeLeft > 0){
-			timeLeft -= Time.deltaTime;
-			timeSlider.value -= i  * Time.deltaTime;
+			if(!GameManager.instance.GetGameResult()){
+				timeSpeed = 2;
+			} else{
+				timeSpeed = 1;
+			}
+			timeLeft -= Time.deltaTime * timeSpeed;
+			timeSlider.value -= i  * Time.deltaTime * timeSpeed;
 			timerText.text = Mathf.Round(timeLeft + .5f).ToString();
 			yield return null;
 		}

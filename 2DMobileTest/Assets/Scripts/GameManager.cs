@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour {
 		TILT
 	}
 
+	public bool isGameOver;
+
 	public GameType currentGameType;
 
 	public delegate void StartAction();
@@ -38,16 +40,18 @@ public class GameManager : MonoBehaviour {
 			Destroy(this);
 		}
 		instance = this;
-		DontDestroyOnLoad(this);
-		DontDestroyOnLoad(gameObject);
+	}
+
+	public bool GetGameResult(){
+		return gameResult;
 	}
 
 	private void Start() {
+
 		CanvasManager.instance.SetScoreText(currentScore.ToString());
 		CanvasManager.instance.ScoreFadeIn();
 		StartCoroutine(StartNextGame());
 
-		
 	}
 
 	IEnumerator StartNextGame(){
@@ -113,10 +117,18 @@ public class GameManager : MonoBehaviour {
 		if(gameResult){
 			currentScore++;
 			CanvasManager.instance.SetScoreText(currentScore.ToString());
+			
+			if(currentScore%5==0 && currentScore>0){
+				gameDificulty += gameDificulty<3?1:0;
+			}
+
 		} else {
 			CanvasManager.instance.LooseHeart(livesRemaining);
 			print(livesRemaining);
 			livesRemaining--;
+			if(livesRemaining<=0){
+				isGameOver = true;
+			}
 		}
 		
 		SceneManager.UnloadSceneAsync(currentGameId);
@@ -124,7 +136,20 @@ public class GameManager : MonoBehaviour {
 
 		yield return null;
 
-		StartCoroutine(StartNextGame());
+		if(!isGameOver){
+			StartCoroutine(StartNextGame());
+		} else
+		{
+			StartCoroutine(ShowGameOver());
+		}
+
+	}
+
+	IEnumerator ShowGameOver(){
+		yield return new WaitForSeconds(2);
+		CanvasManager.instance.showGO();
+		yield return new WaitForSeconds(3);
+		SceneManager.LoadScene("MainMenu");
 
 	}
 

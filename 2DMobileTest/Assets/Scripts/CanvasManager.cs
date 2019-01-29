@@ -16,16 +16,23 @@ public class CanvasManager : MonoBehaviour {
 	public CanvasGroup touchGroup;
 	public CanvasGroup tiltGroup;
 
+	public CanvasGroup gameOverCanvas;
+
 
 	private void Awake() {
 		if(instance != null){
 			Destroy(this);
 		}
 		instance = this;
-		DontDestroyOnLoad(this);
 	}
 
 	private void Start() {
+
+	}
+
+	public void showGO(){
+
+		StartCoroutine(FadeInGameOver());
 
 	}
 
@@ -138,6 +145,15 @@ public class CanvasManager : MonoBehaviour {
 
 		}
 
+	}
+
+	IEnumerator FadeInGameOver(){
+		while(gameOverCanvas.alpha < 1){
+
+			gameOverCanvas.alpha += 0.01f;
+			yield return null;
+
+		}
 	}
 
 }

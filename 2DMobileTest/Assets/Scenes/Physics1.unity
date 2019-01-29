@@ -377,8 +377,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 20
-  m_LinearDrag: 1
-  m_AngularDrag: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 4b54fd061c0884249867209c011104ba, type: 2}
   m_Interpolate: 1
@@ -755,6 +755,16 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 50689546064676140, guid: 078052a5e80c16c418250a00ca399194,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 50689546064676140, guid: 078052a5e80c16c418250a00ca399194,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 078052a5e80c16c418250a00ca399194, type: 3}
 --- !u!1001 &794128964
@@ -855,8 +865,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 15
-  m_LinearDrag: 1
-  m_AngularDrag: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 4b54fd061c0884249867209c011104ba, type: 2}
   m_Interpolate: 1
@@ -987,8 +997,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 20
-  m_LinearDrag: 1
-  m_AngularDrag: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 4b54fd061c0884249867209c011104ba, type: 2}
   m_Interpolate: 1
@@ -1381,8 +1391,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 15
-  m_LinearDrag: 1
-  m_AngularDrag: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 4b54fd061c0884249867209c011104ba, type: 2}
   m_Interpolate: 1
