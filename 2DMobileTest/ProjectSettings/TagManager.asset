@@ -9,6 +9,7 @@ TagManager:
   - Bug
   - Plug
   - Rock
+  - Gate
   layers:
   - Default
   - TransparentFX

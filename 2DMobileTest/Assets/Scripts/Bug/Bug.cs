@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bug : MonoBehaviour {
+
+    private string intro = "Kill";
 	Vector3 position;
 	Vector3 position1;
 	Vector3 position2;

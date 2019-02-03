@@ -20,7 +20,10 @@ public class BallManager : MonoBehaviour
     public void RemoveBall(){
         numberOfBalls--;
         if(numberOfBalls<=0){
-            GameManager.instance.SetGameResult(true);
+            if(GameManager.instance != null){
+
+                GameManager.instance.SetGameResult(true);
+            }
         }
     }
     

@@ -4,7 +4,8 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 
 public class AlienSceneManager : MonoBehaviour
-{
+{   
+    private string intro = "Find the Alien";
 	public static AlienSceneManager instance = null;
     public int spawnAlien;
     public bool isWin = false;
@@ -24,6 +25,7 @@ public class AlienSceneManager : MonoBehaviour
 			Destroy(this);
 		}
 		instance = this;
+        TimerManager.instance.SetGameDescription(intro);
         string[] sceneDifficulty = Regex.Split(GameManager.instance.currentGameId,".+(\\d)");
         levelDifficulty = int.Parse(sceneDifficulty[1]);
         switch(levelDifficulty)

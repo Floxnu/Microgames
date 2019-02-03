@@ -10,7 +10,8 @@ public class TimerManager : MonoBehaviour {
 	public Slider timeSlider;
 	public Text timerText;
 	public float timeLeft;
-	private float timeSpeed = 1;
+	private float timeSpeed = 0;
+	public Text gameDescriptionText;
 
 	private void Awake() {
 		if(instance!=null){
@@ -28,6 +29,8 @@ public class TimerManager : MonoBehaviour {
 
 	public void StartTimer(){
 		GameManager.instance.SetGameResult(false);
+		gameDescriptionText.CrossFadeAlpha(0, 0.1f, false);
+		StartCoroutine(ShowAndFade());
 
 		StartCoroutine(DecreaseTimer());
 
@@ -39,13 +42,13 @@ public class TimerManager : MonoBehaviour {
 		timeSlider.value = 100;
 
 		while(timeLeft > 0){
-			if(!GameManager.instance.GetGameResult()){
-				timeSpeed = 2;
+			if(GameManager.instance.GetGameResult()){
+				timeSpeed = 0.5f;
 			} else{
-				timeSpeed = 1;
+				timeSpeed = 0;
 			}
-			timeLeft -= Time.deltaTime * timeSpeed;
-			timeSlider.value -= i  * Time.deltaTime * timeSpeed;
+			timeLeft -= Time.deltaTime + timeSpeed;
+			timeSlider.value -= (i  * Time.deltaTime) + timeSpeed;
 			timerText.text = Mathf.Round(timeLeft + .5f).ToString();
 			yield return null;
 		}
@@ -56,6 +59,29 @@ public class TimerManager : MonoBehaviour {
 
 	private void OnDestroy() {
 		instance = null;
+	}
+
+
+	public void SetGameDescription(string text){
+		gameDescriptionText.text = text;
+	}
+
+
+	IEnumerator ShowAndFade(){
+
+		for(int i = 0; i < 75; i++){
+
+			gameDescriptionText.CrossFadeAlpha(1, 1.1f, false);
+			yield return null;
+		}
+
+		for(int i = 0; i < 60; i++){
+
+			gameDescriptionText.CrossFadeAlpha(0, .5f, false);
+			yield return null;
+		}
+
+
 	}
 	
 }

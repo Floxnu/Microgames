@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
-
+	public AudioSource AS;
+	public AudioClip loseHeart;
+	public AudioClip scoreUp;
 	private int livesRemaining = 3;
 
 	public int currentScore;
@@ -117,7 +119,7 @@ public class GameManager : MonoBehaviour {
 		if(gameResult){
 			currentScore++;
 			CanvasManager.instance.SetScoreText(currentScore.ToString());
-			
+			AS.PlayOneShot(scoreUp);
 			if(currentScore%5==0 && currentScore>0){
 				gameDificulty += gameDificulty<3?1:0;
 			}
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour {
 		} else {
 			CanvasManager.instance.LooseHeart(livesRemaining);
 			print(livesRemaining);
+			AS.PlayOneShot(loseHeart);
 			livesRemaining--;
 			if(livesRemaining<=0){
 				isGameOver = true;

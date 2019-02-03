@@ -12,12 +12,17 @@ public class PlugMovement : MonoBehaviour
     Vector3 desiredCameraPosition;
     Vector3 offset;
     private bool ableToMove;
+    private bool isStopped;
+    Rigidbody rbRef;
+    AudioSource audioRef;
 
 
     private void Awake() {
+        rbRef = GetComponent<Rigidbody>();
         charC = GetComponent<CharacterController>();
         offset = Camera.main.transform.position - transform.position;
         GameManager.OnGameStart += CustomStart;
+        audioRef = GetComponent<AudioSource>();
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetSceneByName(GameManager.instance.currentGameId));
 
     }
@@ -29,30 +34,44 @@ public class PlugMovement : MonoBehaviour
     
     void Update()
     {   
+        if(Input.touchCount > 0){
+            isStopped = true;
+            rbRef.velocity = Vector3.zero;
+            
+        } else {
+            isStopped = false;
+
+        }
 
         if(ableToMove){
+           if(!isStopped){
 
-            Vector3 input = Input.acceleration;
+                Vector3 input = Input.acceleration;
 
             //input = Quaternion.Euler(90, 0, 90) * input;
-            Vector3 movement = new Vector3(input.x * (speed / 2) ,0 , input.y + 10f * speed * Time.deltaTime);
+                Vector3 movement = new Vector3(input.x * (speed / 2) ,0 , input.y + 6f * speed * Time.deltaTime);
 
-            desiredCameraPosition = transform.position + offset;
 
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, desiredCameraPosition, 0.05f);
+
+           
 
             //print(input);
 
-            charC.SimpleMove(movement);
-            
+                charC.SimpleMove(movement);
+           } 
         }  
         //transform.Translate(input.x ,0 , Time.deltaTime * (input.y + 10f), Space.World);
+        desiredCameraPosition = transform.position + offset;
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, desiredCameraPosition, 0.05f);
         
     }
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.tag != "Finish" && other.gameObject.tag != "Floor" && other.gameObject.tag != "Plug"){
             ableToMove = false;
+            rbRef.freezeRotation = false;
+            rbRef.useGravity = true;
+            audioRef.Play();
 
         }
         print("Collision!");

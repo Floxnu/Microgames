@@ -7,6 +7,12 @@ public class touchToMoveSquare : MonoBehaviour {
 	bool moving = false;
 	Rigidbody2D rbRef;
 
+	private void Awake() {
+		if(TimerManager.instance != null){
+			TimerManager.instance.SetGameDescription("Pocket the Balls");
+
+		}
+	}
 	private void Start() {
 		rbRef = GetComponent<Rigidbody2D>();
 	}

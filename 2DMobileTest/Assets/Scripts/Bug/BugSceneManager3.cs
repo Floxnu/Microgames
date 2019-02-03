@@ -24,13 +24,20 @@ void customStart()
 
 		Invoke("instantiateobject", 1.0f);
 		
-		Invoke("checkifwin", 6);
 		GameManager.OnGameStart -= customStart;		
 
 	}
+
+	/// <summary>
+	/// Start is called on the frame when a script is enabled just before
+	/// any of the Update methods is called the first time.
+	/// </summary>
+	void Start()
+	{
+	}
 	
 	void Update () {
-		
+		checkifwin();
 	}
 
 	void Awake()
@@ -54,24 +61,13 @@ void customStart()
 
 	}
 
-	public bool checkifwin()
+	public void checkifwin()
 	{
 		if (bug.Count == 0)
 		{
-			winningstate = true;
+			print(true);
 			GameManager.instance.SetGameResult(true);
-		}else
-		{
-			print(bug.Count);
-			winningstate = false;
-			GameManager.instance.SetGameResult(false);
 		}
-			instance = null;
-			return winningstate;
 	}
 
-	public static bool getwinningstate()
-	{
-		return winningstate;
-	}
 }

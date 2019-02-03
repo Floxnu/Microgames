@@ -8,9 +8,13 @@ public class Socket : MonoBehaviour {
 	Transform plugTransform;
 
 	public Vector3 offset;
+	public AudioSource audioRef;
 
 
-
+	private void Awake() {
+		TimerManager.instance.SetGameDescription("Steer and Plug in Correctly");
+		audioRef = GetComponent<AudioSource>();
+	}
 
 	private void OnTriggerEnter(Collider other) {
 		if(other.gameObject.tag == "Plug"){
@@ -18,6 +22,7 @@ public class Socket : MonoBehaviour {
 			if(plugRef.plugID == socketID){
 				plugRef.enabled = false;
 				plugRef.gameObject.GetComponent<BoxCollider>().enabled = false;
+				audioRef.Play();
 				Destroy(plugRef.gameObject.GetComponent<Rigidbody>());				
 				plugTransform = other.gameObject.transform;
 				StartCoroutine(PlugIn());

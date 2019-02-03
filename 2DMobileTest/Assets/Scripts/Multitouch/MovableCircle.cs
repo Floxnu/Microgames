@@ -7,7 +7,15 @@ public class MovableCircle : MonoBehaviour
     Vector2 targetPosition;
     Vector3 startingPosition;
     bool isTouchOver;
+    private Rigidbody2D rbRef;
+    public float maxLeft;
+    public float maxRight;
+    public GameObject explosion;
 
+
+    private void Awake() {
+        rbRef = GetComponent<Rigidbody2D>();
+    }
     private void Start() {
         startingPosition = transform.position;
     }
@@ -31,10 +39,23 @@ public class MovableCircle : MonoBehaviour
     }
 
     private void Update() {
-        transform.position = Vector2.Lerp(transform.position, targetPosition, 0.3f);
+        if(isTouchOver){
+
+            targetPosition = new Vector2(Mathf.Clamp(targetPosition.x, maxLeft, maxRight), transform.position.y);
+            rbRef.MovePosition(Vector2.Lerp(transform.position, targetPosition, 0.3f));
+        }
 
         if(!isTouchOver){
             targetPosition = startingPosition;
+            rbRef.MovePosition(Vector2.Lerp(transform.position, targetPosition, 0.3f));
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player"){
+            Instantiate(explosion, other.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+            GameManager.instance.SetGameResult(false);
         }
     }
 }

@@ -7,6 +7,11 @@ public class Ball : MonoBehaviour
     public Vector3 target;
     Rigidbody2D rbRef;
 
+    public AudioSource audioRef;
+    public AudioClip hitSound;
+    public AudioClip ballHitSound;
+    public AudioClip pocketSound;
+
 
 
     private void Awake() {
@@ -21,6 +26,7 @@ public class Ball : MonoBehaviour
     IEnumerator moveToInside(){
 
 		gameObject.GetComponent<Collider2D>().enabled = false;
+        audioRef.PlayOneShot(pocketSound);
 		
 		for(int i = 0; i<15; i++){
 			Vector3 targetVector = new Vector3(target.x, target.y, 0);
@@ -32,5 +38,13 @@ public class Ball : MonoBehaviour
 		Destroy(gameObject);
 
 	}
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Floor")){
+            audioRef.PlayOneShot(hitSound);
+        } else if(other.gameObject.CompareTag("Ball")){
+            audioRef.PlayOneShot(ballHitSound);
+        }
+    }
 
 }

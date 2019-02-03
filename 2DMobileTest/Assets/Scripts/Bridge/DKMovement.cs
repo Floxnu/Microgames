@@ -10,14 +10,17 @@ public class DKMovement : MonoBehaviour {
 	Animator animRef;
 	bool isFlipped;
 	bool gameStart;
+	public AudioSource flipAudio;
 
 
 	private void Awake() {
 		GameManager.OnGameStart += CustomStart;
+		TimerManager.instance.SetGameDescription("Draw a Path");
 	}
 	void Start () {
 		rbRef = GetComponent<Rigidbody2D>();
 		animRef = GetComponent<Animator>();
+		//gameStart = true;
 		
 	}
 
@@ -42,12 +45,18 @@ public class DKMovement : MonoBehaviour {
 			if(startFall > 0 ){
 				startFall -= Time.deltaTime;
 			}else{
+				GetComponent<AudioSource>().Stop();
+
             	animRef.SetBool("IsFalling", true);
 
 			}
         } else{
 			startFall = 0.1f;
 			animRef.SetBool("IsFalling", false);
+			if(!GetComponent<AudioSource>().isPlaying){
+				GetComponent<AudioSource>().Play();
+
+			}
 		}
 
 	}
@@ -55,6 +64,7 @@ public class DKMovement : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D other) {
 		if(other.collider.tag == "Rock"){
 			GetComponent<SpriteRenderer>().flipX = true;
+			flipAudio.Play();
 			isFlipped = !isFlipped;
 		}
 	}

@@ -25,15 +25,14 @@ public class BugSceneManager: MonoBehaviour {
 
 		Invoke("instantiateobject", 1.0f);
 		
-		Invoke("checkifwin", 6);
 		GameManager.OnGameStart -= customStart;	
 
 	}
 	void Start () {
-	
 	}
 	
 	void Update () {
+		checkifwin();
 		
 	}
 
@@ -52,26 +51,15 @@ public class BugSceneManager: MonoBehaviour {
   		bug.Add(current);
 	}
 
-	public bool checkifwin()
+	public void checkifwin()
 	{
 		if (bug.Count == 0)
 		{
-			winningstate = true;
+			print(true);
 			GameManager.instance.SetGameResult(true);
-		}else
-		{
-			print(bug.Count);
-			winningstate = false;
-			GameManager.instance.SetGameResult(false);
 		}
-			instance = null;
-			return winningstate;
 	}
 
-	public static bool getwinningstate()
-	{
-		return winningstate;
-	}
 
 	
 
